@@ -1,4 +1,4 @@
-import { ActivityIndicator , View, Text} from "react-native";
+import { ActivityIndicator, Text} from "react-native";
 
 export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe, setIngredientList, navigation) {
     setIsLoading(true);
@@ -17,7 +17,7 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
                 (result) => {
                   setIsLoading(false);
                   setRecipe(result);
-                  navigation.navigate('RecipeDetails', {recipe: result});
+                  navigation.navigate('Recipe Details', {recipe: result});
                 },
                 (error) => {
                   setIsLoading(false);
@@ -38,21 +38,13 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
   }
 
 
-  export function getContent(isLoading, error, recipe){
+  export function getContent(isLoading, error){
     if (isLoading) {
       return <ActivityIndicator size="large" />;
     }
 
     if (error) {
       return <Text>{error}</Text>;
-    }
-
-    if (recipe) {
-      return (
-        <View>
-          <Text>Previous Recipe: {recipe.title}</Text>
-        </View>
-      );
     }
 
     return null;

@@ -33,6 +33,7 @@ export default function HomeScreen({navigation}){
                 style={styles.textInput} 
                 value={ingredient}
                 onChangeText={text => setIngredient(text)}
+                onSubmitEditing={addIngredientHandler}
             />
             <Button title='Add Ingredient' onPress={addIngredientHandler}/>
             </View>
@@ -44,9 +45,12 @@ export default function HomeScreen({navigation}){
             keyExtractor={(item, index) => index.toString()}
             />
 
+            <View style={styles.resultContainer}>
+            {content}
+            </View>
 
             <Button
-            title='Search Recipes'
+            title='Search Recipies'
             onPress={handleSearchRecipes}
             />
 
