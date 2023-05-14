@@ -1,19 +1,25 @@
-import { StyleSheet, Text, View, Image} from 'react-native';
-
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function HistoryScreen({ route }) {
-  const {recentSearches} = route.params;
-  console.log(recentSearches)
-  return(
-      <View>
-        {recentSearches.map((searchTerm, index) => (
-          <Text style={styles.label} key={index}>{searchTerm}</Text>
-        ))}
-      </View>
+  const { recentSearches } = route.params;
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>Search History</Text>
+      {recentSearches.map((searchTerm, index) => (
+        <Text style={styles.label} key={index}>
+          {searchTerm}
+        </Text>
+      ))}
+    </ScrollView>
   );
-  }
+}
 
 const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    padding: 16,
+  },
   title: {
     fontFamily: 'playfair-display',
     fontSize: 24,
@@ -25,16 +31,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 8,
   },
-  image: {
-    width: '100%',
-    height: 200,
-    resizeMode: 'cover',
-    marginBottom: 16,
-  },
-  text: {
-    fontFamily: 'playfair-display',
-    fontSize: 14,
-    marginBottom: 8,
-  },
 });
-
