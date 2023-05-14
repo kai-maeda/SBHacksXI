@@ -1,6 +1,6 @@
 import { ActivityIndicator , View, Text} from "react-native";
 
-export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe, setIngredientList) {
+export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe, setIngredientList, navigation) {
     setIsLoading(true);
     setError(null);
     setRecipe(null);
@@ -17,6 +17,8 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
                 (result) => {
                   setIsLoading(false);
                   setRecipe(result);
+                  console.log("going to screen");
+                  navigation.navigate('RecipeDetails', {recipe: result});
                 },
                 (error) => {
                   setIsLoading(false);
