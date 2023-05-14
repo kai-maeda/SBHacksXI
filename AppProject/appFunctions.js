@@ -5,23 +5,20 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
     setIsLoading(true);
     setError(null);
     setRecipe(null);
+    const APIKeyCurrent = 'c39d6f528f9d4e2b928924bd2bf990ef';
     const ingredientsQueryParam = ingredientList.join(",");
-    fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsQueryParam}&apiKey=3ae3434324424397849d93facc227dfa&sort=min-missing-ingredients`)
+    fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsQueryParam}&apiKey=${APIKeyCurrent}&sort=min-missing-ingredients`)
       .then(res => res.json())
       .then(
         (result) => {
           if (result && result.length > 0) {
             const recipeId = result[0].id;
-            fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=3ae3434324424397849d93facc227dfa`)
-            .then(res => res.json())
-            .then(
-              (result) => {
-                setIsLoading(false);
-                setRecipe(result);
-                const newSearchTerm = result.title;
-                const updatedRecentSearches = [newSearchTerm, ...recentSearches.slice(0, MAX_RECENT_SEARCHES)];
-                console.log(recentSearches);
-                setRecentSearches(updatedRecentSearches);
+            fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${APIKeyCurrent}`)
+              .then(res => res.json())
+              .then(
+                (result) => {
+                  setIsLoading(false);
+                  setRecipe(result);
                   navigation.navigate('Recipe Details', {recipe: result});
                 },
                 (error) => {
