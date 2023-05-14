@@ -5,7 +5,10 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
     setIsLoading(true);
     setError(null);
     setRecipe(null);
-    const APIKeyCurrent = 'c39d6f528f9d4e2b928924bd2bf990ef';
+    const APIKeyCurrent = '3ae3434324424397849d93facc227dfa';
+    /* 63747c24f44948479135412918f49ad0
+    // 1206edced7b94e3fa53f1569008bce89
+    // c39d6f528f9d4e2b928924bd2bf990ef*/
     const ingredientsQueryParam = ingredientList.join(",");
     fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsQueryParam}&apiKey=${APIKeyCurrent}&sort=min-missing-ingredients`)
       .then(res => res.json())
