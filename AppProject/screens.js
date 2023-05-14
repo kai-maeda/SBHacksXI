@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 40,
-
   },
   inputContainer: {
     flexDirection: 'column',
@@ -105,5 +104,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     marginBottom: 8,
+    fontFamily: 'playfair-display',
   },
 });
