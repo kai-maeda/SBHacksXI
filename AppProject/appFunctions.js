@@ -4,14 +4,15 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
     setIsLoading(true);
     setError(null);
     setRecipe(null);
+    const APIKeyCurrent = 'c39d6f528f9d4e2b928924bd2bf990ef';
     const ingredientsQueryParam = ingredientList.join(",");
-    fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsQueryParam}&apiKey=c39d6f528f9d4e2b928924bd2bf990ef&sort=min-missing-ingredients`)
+    fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsQueryParam}&apiKey=${APIKeyCurrent}&sort=min-missing-ingredients`)
       .then(res => res.json())
       .then(
         (result) => {
           if (result && result.length > 0) {
             const recipeId = result[0].id;
-            fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=c39d6f528f9d4e2b928924bd2bf990ef`)
+            fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${APIKeyCurrent}`)
               .then(res => res.json())
               .then(
                 (result) => {
