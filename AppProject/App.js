@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button, FlatList, ActivityIndicator} from 'react-native';
-import { addIngredientHandler, handleSearchRecipes, getContent } from './appFunctions';
+import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
+import {searchRecipes, getContent} from './appFunctions';
 
 
 export default function App() {
@@ -10,6 +10,19 @@ export default function App() {
   const [ingredient, setIngredient] = useState('');
   const [ingredientList, setIngredientList] = useState([]);
   const [recipe, setRecipe] = useState('');
+
+  function addIngredientHandler() {
+    if(ingredient) {
+        setIngredientList(prevList => [...prevList, ingredient]);
+        setIngredient('');
+    }
+  };
+
+  function handleSearchRecipes() {
+    searchRecipes(ingredientList, setIsLoading, setError, setRecipe, setIngredientList);
+  }
+  
+  const content = getContent(isLoading, error, recipe);
 
   return (
     <View style={styles.container}>
@@ -31,7 +44,7 @@ export default function App() {
       />
 
       <View style={styles.resultContainer}>
-        {getContent()}
+        {content}
       </View>
 
       <Button

@@ -1,11 +1,6 @@
-export function addIngredientHandler() {
-    if(ingredient) {
-        setIngredientList(prevList => [...prevList, ingredient]);
-        setIngredient('');
-    }
-};
+import { ActivityIndicator , View, Text} from "react-native";
 
-export function handleSearchRecipes() {
+export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe, setIngredientList) {
     setIsLoading(true);
     setError(null);
     setRecipe(null);
@@ -14,7 +9,6 @@ export function handleSearchRecipes() {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
           if (result && result.length > 0) {
             const recipeId = result[0].id;
             fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=1206edced7b94e3fa53f1569008bce89`)
@@ -43,7 +37,7 @@ export function handleSearchRecipes() {
   }
 
 
-  export const getContent = () => {
+  export function getContent(isLoading, error, recipe){
     if (isLoading) {
       return <ActivityIndicator size="large" />;
     }
