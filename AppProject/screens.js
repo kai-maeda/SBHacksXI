@@ -50,7 +50,7 @@ export default function HomeScreen({navigation}){
             </View>
 
             <Button
-            title='Search Recipies'
+            title='Search Recipes'
             onPress={handleSearchRecipes}
             />
 
