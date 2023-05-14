@@ -20,11 +20,13 @@ export default function RecipeScreen({ route }) {
 
 const styles = StyleSheet.create({
   title: {
+    fontFamily: 'playfair-display',
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
   },
   label: {
+    fontFamily: 'playfair-display',
     fontSize: 16,
     marginBottom: 8,
   },
@@ -35,6 +37,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   text: {
+    fontFamily: 'playfair-display',
     fontSize: 14,
     marginBottom: 8,
   },
