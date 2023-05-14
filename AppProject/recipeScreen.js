@@ -11,7 +11,7 @@ export default function RecipeScreen({ route }) {
         <Image source={{ uri: imgURL }} style={styles.image} />
         {/* Display additional recipe details */}
         <Text style={styles.label}>Additional Details:</Text>
-        <Text style={styles.text}>Preparation Time: {recipe.preparationTime} minutes</Text>
+        <Text style={styles.text}>Preparation Time: {recipe.readyInMinutes} minutes</Text>
         <Text style={styles.text}>Servings: {recipe.servings}</Text>
         <Text style={styles.text}>Instructions: {recipe.instructions}</Text>
       </View>

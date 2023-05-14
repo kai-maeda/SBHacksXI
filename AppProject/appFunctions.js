@@ -17,7 +17,6 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
                 (result) => {
                   setIsLoading(false);
                   setRecipe(result);
-                  console.log("going to screen");
                   navigation.navigate('RecipeDetails', {recipe: result});
                 },
                 (error) => {
@@ -51,8 +50,7 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
     if (recipe) {
       return (
         <View>
-          <Text>Recipe found: {recipe.title}</Text>
-          <Text>Details: {recipe.id} - {recipe.image}</Text>
+          <Text>Previous Recipe: {recipe.title}</Text>
         </View>
       );
     }

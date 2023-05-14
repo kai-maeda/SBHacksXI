@@ -6,7 +6,6 @@ import RecipeScreen from './recipeScreen';
 const Stack = createStackNavigator();
 
 export default function App() {
-  console.log('here');
   return (
     <NavigationContainer>
       <Stack.Navigator> 

@@ -44,9 +44,6 @@ export default function HomeScreen({navigation}){
             keyExtractor={(item, index) => index.toString()}
             />
 
-            <View style={styles.resultContainer}>
-            {content}
-            </View>
 
             <Button
             title='Search Recipies'
