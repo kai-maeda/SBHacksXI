@@ -28,24 +28,37 @@ export default function App() {
     setIsLoading(true);
     setError(null);
     setRecipe(null);
-    const ingredientsQueryParam = ingredientList.join(',');
-    console.log(ingredientsQueryParam);
-    fetch('https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsQueryParam}&sort=min-missing-ingredients&apiKey=ee66ebf2dd10409fbea005df1b091143')
+    const ingredientsQueryParam = ingredientList.join(",");
+    fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredientsQueryParam}&apiKey=1206edced7b94e3fa53f1569008bce89&sort=min-missing-ingredients`)
       .then(res => res.json())
       .then(
         (result) => {
-          if (result.length > 0) {
-            setRecipe(result[0]);
+          console.log(result);
+          if (result && result.length > 0) {
+            const recipeId = result[0].id;
+            fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=1206edced7b94e3fa53f1569008bce89`)
+              .then(res => res.json())
+              .then(
+                (result) => {
+                  setIsLoading(false);
+                  setRecipe(result);
+                },
+                (error) => {
+                  setIsLoading(false);
+                  setError('Failed to fetch recipe details');
+                }
+              );
+          } else {
+            setIsLoading(false);
+            setError('No recipes found');
           }
-          setIsLoading(false);
         },
         (error) => {
           setIsLoading(false);
-          setError(error);
+          setError('Failed to fetch recipe IDs');
         }
       );
-      console.log(recipe);
-      setIngredientList([]);
+      setIngredientList([])
   }
 
   const getContent = () => {
