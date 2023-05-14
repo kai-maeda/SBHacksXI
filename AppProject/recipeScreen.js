@@ -1,14 +1,14 @@
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, Image} from 'react-native';
 
 
 export default function RecipeScreen({ route }) {
     const { recipe } = route.params;
-  
+    const imgURL = recipe.image;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Recipe Details:</Text>
         <Text style={styles.label}>Title: {recipe.title}</Text>
-       {/*  <Image source={{ uri: recipe.image }} style={styles.image} /> */}
+        <Image source={{ uri: imgURL }} style={styles.image} />
         {/* Display additional recipe details */}
         <Text style={styles.label}>Additional Details:</Text>
         <Text style={styles.text}>Preparation Time: {recipe.preparationTime} minutes</Text>
