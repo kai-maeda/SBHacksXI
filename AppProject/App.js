@@ -13,6 +13,8 @@ export default function App() {
     async function loadFonts() {
       await Font.loadAsync({
         'playfair-display': require('./assets/fonts/PlayfairDisplay-Regular.ttf'),
+        'playfair-display-bold': require('./assets/fonts/PlayfairDisplay-Bold.ttf'),
+        'playfair-display-extrabold': require('./assets/fonts/PlayfairDisplay-ExtraBold.ttf'),
       });
     }
 
