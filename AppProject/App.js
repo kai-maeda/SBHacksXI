@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as Font from 'expo-font';
-import HomeScreen from './screens';
+import HomeScreen from './HomeScreen';
 import RecipeScreen from './recipeScreen';
+import HistoryScreen from './history';
 
 const Stack = createStackNavigator();
 
@@ -55,6 +56,13 @@ export default function App() {
           component={RecipeScreen}
           options={{
             title: 'Recipe Details',
+          }}
+        />
+        <Stack.Screen
+          name="History"
+          component={HistoryScreen}
+          options={{
+            title: 'History',
           }}
         />
       </Stack.Navigator>

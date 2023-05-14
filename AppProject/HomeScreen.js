@@ -1,38 +1,31 @@
-/* <<<<<<< HEAD
 import { StatusBar } from 'expo-status-bar';
 import {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, FlatList, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, FlatList, TouchableOpacity } from 'react-native';
 import {searchRecipes, getContent} from './appFunctions';
-=======
-import React from "react";
-import{View,}from "react-native";
+import { createMaterialTopTabNavigator}  from "@react-navigation/material-top-tabs";
 import { AppRegistry} from "react-native";
-import App from "./HomeScreen";
->>>>>>> 4065c97ddd26276ded7b8ab4cd0db3f1143f22aa
+
+
+const Tab = createMaterialTopTabNavigator();
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.7 };
 
-const AppButton = ({ onPress, title }) => (
-    <TouchableOpacity onPress={onPress} style={styles.appButtonContainer}>
-      <Text style={styles.appButtonText}>{title}</Text>
-    </TouchableOpacity>
-  );
-
-TouchableOpacity.defaultProps = { activeOpacity: 0.7 };
 
 const AppButton = ({ onPress, title }) => (
-    <TouchableOpacity onPress={onPress} style={styles.appButtonContainer}>
-      <Text style={styles.appButtonText}>{title}</Text>
-    </TouchableOpacity>
-  );
+  <TouchableOpacity onPress={onPress} style={styles.appButtonContainer}>
+    <Text style={styles.appButtonText}>{title}</Text>
+  </TouchableOpacity>
+);
 
 export default function HomeScreen({navigation}){
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState();
-    const [ingredient, setIngredient] = useState('');
-    const [ingredientList, setIngredientList] = useState([]);
-    const [recipe, setRecipe] = useState('');
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+  const [ingredient, setIngredient] = useState('');
+  const [ingredientList, setIngredientList] = useState([]);
+  const [recipe, setRecipe] = useState('');
+  const [recentSearches, setRecentSearches] = useState([]);
+  
+  
     const content = getContent(isLoading, error, recipe);
 
 
@@ -44,20 +37,20 @@ export default function HomeScreen({navigation}){
     };
 
     function handleSearchRecipes() {
-        searchRecipes(ingredientList, setIsLoading, setError, setRecipe, setIngredientList, navigation);
+        searchRecipes(ingredientList, setIsLoading, setError, setRecipe, setIngredientList, setRecentSearches, recentSearches, navigation);
     }
 
-
     return (
+        
         <View style={styles.container}>
-            <View style={styles.inputContainer}>
-            <TextInput 
+             <View style={styles.inputContainer}>
+             <TextInput 
                 placeholder='Ingredients' 
                 style={styles.textInput} 
                 value={ingredient}
                 onChangeText={text => setIngredient(text)}
                 onSubmitEditing={addIngredientHandler}
-            />
+                />
             <AppButton title='Add Ingredient' onPress={addIngredientHandler}/>
             </View>
 
@@ -71,9 +64,15 @@ export default function HomeScreen({navigation}){
             <View style={styles.resultContainer}>
             {content}
             </View>
+            <View style = {styles.historyPage}>
+              <AppButton
+              title='history'
+              onPress={()=>{navigation.navigate('History',{recentSearches: recentSearches})}}/>
+                {/* onPress={()=>{console.log(recentSearches)}}/> */}
+            </View>
 
             <AppButton
-            title='Search Recipes'
+            title='Search Recipies'
             onPress={handleSearchRecipes}
             />
 
@@ -84,12 +83,11 @@ export default function HomeScreen({navigation}){
 
 
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 40,
+
   },
   inputContainer: {
     flexDirection: 'column',
@@ -104,7 +102,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#cccccc',
     borderRadius: 10,
-    width: '95%',
+    width: '80%',
     marginRight: 8,
     padding: 8
   },
@@ -130,13 +128,21 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: 8,
     fontFamily: 'playfair-display',
+
+  },
+  historyPage: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    marginTop: 16,
+    marginRight: 16,
   },
   appButtonContainer: {
-    elevation: 10,
-    backgroundColor: "#fca103",
+    elevation:10,
+    backgroundColor: "#ed7117",
     borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 12
+    paddingVertical: 6,
+    paddingHorizontal: 10
   },
   appButtonText: {
     fontSize: 18,
@@ -146,6 +152,4 @@ const styles = StyleSheet.create({
     textTransform: "uppercase"
   }
 });
-});
 AppRegistry.registerComponent("App", ()=>App);
- */

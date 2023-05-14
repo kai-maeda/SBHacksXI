@@ -1,6 +1,7 @@
 import { ActivityIndicator, Text} from "react-native";
 
-export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe, setIngredientList, navigation) {
+const MAX_RECENT_SEARCHES = 2e53;
+export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe, setIngredientList,setRecentSearches,recentSearches, navigation) {
     setIsLoading(true);
     setError(null);
     setRecipe(null);
@@ -18,6 +19,10 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
                 (result) => {
                   setIsLoading(false);
                   setRecipe(result);
+                  console.log(result.title);
+                  const newSearchTerm = result.title;
+                  const updatedRecentSearches = [newSearchTerm, ...recentSearches.slice(0, MAX_RECENT_SEARCHES)];
+                  setRecentSearches(updatedRecentSearches);
                   navigation.navigate('Recipe Details', {recipe: result});
                 },
                 (error) => {
