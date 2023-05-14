@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 export default function RecipeScreen({ route }) {
   const { recipe } = route.params;
   const imgURL = recipe.image;
+  const instructions = recipe.instructions.replace(/<ol>|<\/ol>|<li>|<\/li>/g, ''); 
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Recipe Title:</Text>
@@ -19,7 +21,7 @@ export default function RecipeScreen({ route }) {
         <Text style={[styles.text, styles.normalText]}>{recipe.servings}</Text>
       </View>
       <Text style={styles.label}>Instructions:</Text>
-      <Text style={[styles.text, styles.normalText, styles.instructionsText]}>{recipe.instructions}</Text>
+      <Text style={[styles.text, styles.normalText, styles.instructionsText]}>{instructions}</Text>
     </ScrollView>
   );
 }
