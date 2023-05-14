@@ -1,7 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TextInput, FlatList, Button, TouchableOpacity } from 'react-native';
 import {searchRecipes, getContent} from './appFunctions';
+
+TouchableOpacity.defaultProps = { activeOpacity: 0.7 };
+
+const AppButton = ({ onPress, title }) => (
+    <TouchableOpacity onPress={onPress} style={styles.appButtonContainer}>
+      <Text style={styles.appButtonText}>{title}</Text>
+    </TouchableOpacity>
+  );
 
 export default function HomeScreen({navigation}){
     const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +43,7 @@ export default function HomeScreen({navigation}){
                 onChangeText={text => setIngredient(text)}
                 onSubmitEditing={addIngredientHandler}
             />
-            <Button title='Add Ingredient' onPress={addIngredientHandler}/>
+            <AppButton title='Add Ingredient' onPress={addIngredientHandler}/>
             </View>
 
             <FlatList 
@@ -49,7 +57,7 @@ export default function HomeScreen({navigation}){
             {content}
             </View>
 
-            <Button
+            <AppButton
             title='Search Recipes'
             onPress={handleSearchRecipes}
             />
@@ -74,12 +82,14 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 8,
     borderBottomWidth: 1,
-    borderBottomColor: '#cccccc'
+    borderBottomColor: '#cccccc',
+    gap: 8
   },
   textInput: {
     borderWidth: 1,
     borderColor: '#cccccc',
-    width: '80%',
+    borderRadius: 10,
+    width: '95%',
     marginRight: 8,
     padding: 8
   },
@@ -106,4 +116,18 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     fontFamily: 'playfair-display',
   },
+  appButtonContainer: {
+    elevation: 10,
+    backgroundColor: "#fca103",
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 12
+  },
+  appButtonText: {
+    fontSize: 18,
+    color: "#fff",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+  }
 });
