@@ -18,9 +18,7 @@ export default function RecipeScreen({ route }) {
         <Text style={[styles.text, styles.boldText]}>Servings: </Text>
         <Text style={[styles.text, styles.normalText]}>{recipe.servings}</Text>
       </View>
-      <View style={styles.detailContainer}>
-        <Text style={[styles.text, styles.boldText]}>Instructions: </Text>
-      </View>
+      <Text style={styles.label}>Instructions:</Text>
       <Text style={[styles.text, styles.normalText, styles.instructionsText]}>{recipe.instructions}</Text>
     </View>
   );
@@ -29,13 +27,13 @@ export default function RecipeScreen({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 15,
   },
   title: {
     fontFamily: 'playfair-display-extrabold',
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: 12,
   },
   label: {
     fontFamily: 'playfair-display-extrabold',
@@ -55,17 +53,17 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'playfair-display',
     flexWrap: 'wrap',
-    fontSize: 14,
+    fontSize: 16,
   },
   boldText: {
     fontWeight: 'bold',
-    fontFamily: 'playfair-display-bold',
+    fontFamily: 'playfair-display-semibolditalic',
   },
   normalText: {
     fontWeight: 'normal',
   },
   instructionsText: {
     flexWrap: 'wrap',
-    fontSize: 12, 
+    fontSize: 14, 
   },
 });

@@ -15,6 +15,7 @@ export default function App() {
         'playfair-display': require('./assets/fonts/PlayfairDisplay-Regular.ttf'),
         'playfair-display-bold': require('./assets/fonts/PlayfairDisplay-Bold.ttf'),
         'playfair-display-extrabold': require('./assets/fonts/PlayfairDisplay-ExtraBold.ttf'),
+        'playfair-display-semibolditalic': require('./assets/fonts/PlayfairDisplay-SemiBoldItalic.ttf'),
       });
     }
 
