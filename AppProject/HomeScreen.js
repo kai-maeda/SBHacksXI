@@ -3,7 +3,7 @@ import {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, FlatList, TouchableOpacity } from 'react-native';
 import {searchRecipes, getContent} from './appFunctions';
 import { createMaterialTopTabNavigator}  from "@react-navigation/material-top-tabs";
-import { AppRegistry} from "react-native";
+import { AppRegistry}  from "react-native";
 
 
 const Tab = createMaterialTopTabNavigator();

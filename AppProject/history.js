@@ -7,7 +7,7 @@ export default function HistoryScreen({ route }) {
   return(
       <View>
         {recentSearches.map((searchTerm, index) => (
-          <Text key={index}>{searchTerm}</Text>
+          <Text style={styles.label} key={index}>{searchTerm}</Text>
         ))}
       </View>
   );
@@ -15,11 +15,13 @@ export default function HistoryScreen({ route }) {
 
 const styles = StyleSheet.create({
   title: {
+    fontFamily: 'playfair-display',
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
   },
   label: {
+    fontFamily: 'playfair-display',
     fontSize: 16,
     marginBottom: 8,
   },
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   text: {
+    fontFamily: 'playfair-display',
     fontSize: 14,
     marginBottom: 8,
   },
