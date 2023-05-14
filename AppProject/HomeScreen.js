@@ -37,7 +37,6 @@ export default function HomeScreen({navigation}){
     return (
         
         <View style={styles.container}>
-            {/* <MyApp /> */}
              <View style={styles.inputContainer}>
              <TextInput 
                 placeholder='Ingredients' 
@@ -120,6 +119,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     marginBottom: 8,
+    fontFamily: 'playfair-display',
+
   },
   historyPage: {
     position: 'absolute',
@@ -129,3 +130,4 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
 });
+AppRegistry.registerComponent("App", ()=>App);

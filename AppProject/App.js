@@ -58,6 +58,13 @@ export default function App() {
             title: 'Recipe Details',
           }}
         />
+        <Stack.Screen
+          name="History"
+          component={HistoryScreen}
+          options={{
+            title: 'History',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

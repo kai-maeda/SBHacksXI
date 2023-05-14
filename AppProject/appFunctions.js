@@ -19,6 +19,10 @@ export function searchRecipes(ingredientList, setIsLoading, setError, setRecipe,
                 (result) => {
                   setIsLoading(false);
                   setRecipe(result);
+                  console.log(result.title);
+                  const newSearchTerm = result.title;
+                  const updatedRecentSearches = [newSearchTerm, ...recentSearches.slice(0, MAX_RECENT_SEARCHES)];
+                  setRecentSearches(updatedRecentSearches);
                   navigation.navigate('Recipe Details', {recipe: result});
                 },
                 (error) => {
