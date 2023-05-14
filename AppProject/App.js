@@ -101,14 +101,16 @@ export default function App() {
         keyExtractor={(item, index) => index.toString()}
       />
 
+      <View style={styles.resultContainer}>
+        {getContent()}
+      </View>
+
       <Button
         title='Search Recipies'
         onPress={handleSearchRecipes}
       />
 
-      <View style={styles.resultContainer}>
-        {getContent()}
-      </View>
+    
 
       <StatusBar style="auto" />
     </View>
@@ -139,5 +141,9 @@ const styles = StyleSheet.create({
   listContainer: {
     //flex: 5,
     padding: 8,
+  },
+  resultContainer: {
+    marginTop: 20,
+    alignItems: 'center',
   },
 });
