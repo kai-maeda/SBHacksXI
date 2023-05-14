@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
 export default function RecipeScreen({ route }) {
   const { recipe } = route.params;
   const imgURL = recipe.image;
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Recipe Title:</Text>
       <Text style={styles.label}>{recipe.title}</Text>
       <Image source={{ uri: imgURL }} style={styles.image} />
@@ -20,13 +20,13 @@ export default function RecipeScreen({ route }) {
       </View>
       <Text style={styles.label}>Instructions:</Text>
       <Text style={[styles.text, styles.normalText, styles.instructionsText]}>{recipe.instructions}</Text>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     padding: 15,
   },
   title: {
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
   },
   instructionsText: {
     flexWrap: 'wrap',
-    fontSize: 14, 
+    fontSize: 14,
   },
 });
